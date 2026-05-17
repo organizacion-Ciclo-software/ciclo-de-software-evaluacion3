@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-ramos-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-ramos
+  template:
+    metadata:
+      labels:
+        app: app-ramos
+    spec:
+      containers:
+      - name: app-ramos
+        image: sebastian1219/app-ramos:latest
+        ports:
+        - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
