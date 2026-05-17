@@ -40,19 +40,11 @@ jobs:
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: Install eksctl
+    - name: Configure kubectl
       run: |
-        curl --silent --location "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-        sudo mv /tmp/eksctl /usr/local/bin
+        aws eks update-kubeconfig --region ${{ secrets.AWS_REGION }} --name cluster-sebastian-vargas
+        kubectl get nodes
 
-    - name: Create EKS cluster
-      run: |
-        eksctl create cluster \
-          --name cluster-sebastian-vargas \
-          --region ${{ secrets.AWS_REGION }} \
-          --nodes 2 \
-          --node-type t3.medium \
-          --managed
 
   deploy:
     runs-on: ubuntu-latest
