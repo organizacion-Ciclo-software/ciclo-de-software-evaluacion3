@@ -20,17 +20,17 @@ jobs:
     - name: Build and Push nginx
       run: |
         docker build -t sebastianvargas/nginx:latest -f docker/nginx/Dockerfile .
-        docker push sebastian1219/nginx:latest
+        docker push sebastianvargas/nginx:latest
 
     - name: Build and Push app-ramos
       run: |
         docker build -t sebastianvargas/app-ramos:latest -f docker/app-ramos/Dockerfile .
-        docker push sebastian1219/app-ramos:latest
+        docker push sebastianvargas/app-ramos:latest
 
     - name: Build and Push apache
       run: |
         docker build -t sebastianvargas/apache:latest -f docker/apache/Dockerfile .
-        docker push sebastian1219/apache:latest
+        docker push sebastianvargas/apache:latest
 
   deploy:
     runs-on: ubuntu-latest
