@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: app-ramos
-        image: sebastian1219/app-ramos:latest
+        image: sebastianvargas/app-ramos:latest
         ports:
         - containerPort: 8080
         readinessProbe:
