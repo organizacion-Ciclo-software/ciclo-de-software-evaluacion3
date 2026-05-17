@@ -187,10 +187,24 @@
 
 **Reputación recuperada: confianza reforzada gracias a la estabilidad técnica.**
 
+### ⚖️ Comparativo de Estrategias de Despliegue
+
+Este gráfico resume las diferencias entre **Rolling Update** y **Blue/Green Deployment**:
+
+- **Rolling Update**
+  - Actualización gradual de pods.
+  - Cero downtime.
+  - Rollbacks más lentos.
+  - Ideal para microservicios y actualizaciones frecuentes.
+
+- **Blue/Green Deployment**
+  - Doble entorno (Blue = producción, Green = pruebas).
+  - Rollback inmediato.
+  - Mayor costo por duplicar recursos.
+  - Ideal para aplicaciones críticas (pagos, e‑commerce).
 
 
-
-
+![Comparativo Rolling Update vs Blue/Green](./imagenes/estrategias-despliegue.png)
 
 
 
