@@ -1,2 +1,2 @@
-FROM httpd:latest
+FROM httpd:latest...
 COPY ./src/apache/index.html /usr/local/apache2/htdocs/index.html
