@@ -22,7 +22,7 @@ Evidencia de runs fallidos y rollback será parte de tu informe.
 
 📌 Síntesis de fallos controlados
 
-Fallo en pruebas  
+Fallo en pruebas
 
 Se introdujo un error intencional en el paso Run tests del workflow (exit 1).
 
@@ -30,7 +30,7 @@ Resultado: la pipeline se detuvo antes de la construcción de imágenes Docker, 
 
 
 
-Fallo en Docker  
+Fallo en Docker
 
 Se modificó el Dockerfile de apache con una imagen base inexistente (httpd:laaz).
 
@@ -38,9 +38,21 @@ Resultado: el paso Build and Push apache falló en la fase de build, impidiendo 
 
 
 
-Fallo en salud del pod  
+Fallo en salud del pod
 
 Se desplegó una imagen con tag inexistente en k3s, provocando ImagePullBackOff.
 
 Resultado: el paso Deploy falló por timeout en rollout status y se activó automáticamente el rollback (kubectl rollout undo), restaurando la versión estable.
+
+
+
+Se integraron y documentaron las cuatro estrategias de despliegue en el flujo CI/CD.
+
+
+
+Cada estrategia aportó evidencia de sus ventajas, desventajas y escenarios de error.
+
+
+
+El pipeline quedó fortalecido con rollout status y rollback automático, cumpliendo los requisitos de QA y de producción.
 
