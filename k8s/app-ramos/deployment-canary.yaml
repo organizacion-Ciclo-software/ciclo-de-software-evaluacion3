@@ -1,20 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-ramos
+  name: app-ramos-canary
+  labels:
+    app: app-ramos
+    track: canary
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: app-ramos
+      track: canary
   template:
     metadata:
       labels:
         app: app-ramos
+        track: canary
     spec:
       containers:
       - name: app-ramos
-        image: sebastianvargas/app-ramos:latest
+        image: sebastianvargas/app-ramos:v2
         ports:
         - containerPort: 8080
         readinessProbe:

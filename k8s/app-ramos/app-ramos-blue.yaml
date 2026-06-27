@@ -1,20 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-ramos
+  name: app-ramos-blue
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: app-ramos
+      color: blue
   template:
     metadata:
       labels:
         app: app-ramos
+        color: blue
     spec:
       containers:
       - name: app-ramos
-        image: sebastianvargas/app-ramos:latest
+        image: sebastianvargas/app-ramos:stable
         ports:
         - containerPort: 8080
         readinessProbe:
