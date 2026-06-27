@@ -66,12 +66,38 @@ jobs:
         aws eks update-kubeconfig --region us-east-1 --name cluster-sebastian-vargas
 
     - name: Deploy nginx
-      run: kubectl apply -f k8s/nginx/
+      id: deploy-nginx
+      run: |
+        kubectl apply -f k8s/nginx/
+        kubectl rollout status deployment/nginx --timeout=60s
+
+    - name: Rollback nginx
+      if: failure()
+      run: |
+        kubectl rollout undo deployment/nginx
+        kubectl rollout status deployment/nginx --timeout=60s
 
     - name: Deploy app-ramos
-      run: kubectl apply -f k8s/app-ramos/
+      id: deploy-app
+      run: |
+        kubectl apply -f k8s/app-ramos/
+        kubectl rollout status deployment/app-ramos --timeout=60s
+
+    - name: Rollback app-ramos
+      if: failure()
+      run: |
+        kubectl rollout undo deployment/app-ramos
+        kubectl rollout status deployment/app-ramos --timeout=60s
 
     - name: Deploy apache
-      run: kubectl apply -f k8s/apache/
+      id: deploy-apache
+      run: |
+        kubectl apply -f k8s/apache/
+        kubectl rollout status deployment/apache --timeout=60s
 
+    - name: Rollback apache
+      if: failure()
+      run: |
+        kubectl rollout undo deployment/apache
+        kubectl rollout status deployment/apache --timeout=60s
 
