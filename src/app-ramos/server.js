@@ -15,3 +15,8 @@ app.get('/health', (req, res) => {
 app.listen(port, () => {
   console.log(`App del ramo escuchando en puerto ${port}`);
 });
+
+
+test('fallo controlado', () => {
+  expect(true).toBe(false);
+});
