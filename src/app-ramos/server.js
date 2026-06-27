@@ -17,6 +17,3 @@ app.listen(port, () => {
 });
 
 
-test('fallo controlado', () => {
-  expect(true).toBe(false);
-});
